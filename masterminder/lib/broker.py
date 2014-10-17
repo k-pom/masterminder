@@ -12,7 +12,7 @@ def handle_message(event_name, data):
         if handler["listen_on"] == event_name:
             multiprocessing.Process(
                 target=handler["handler"],
-                args=(data)
+                args=(data,)
             ).start()
 
 

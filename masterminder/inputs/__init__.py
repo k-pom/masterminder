@@ -15,8 +15,11 @@ class Input(object):
         """
         data = self.check()
         if(data):
-            multiprocessing.Process(
-                target=broker.handle_message,
-                args=(self.name, data)
-            ).start()
+            self.broadcast(self.name, data)
             return True
+
+    def broadcast(name, data):
+        multiprocessing.Process(
+            target=broker.handle_message,
+            args=(name, data)
+        ).start()

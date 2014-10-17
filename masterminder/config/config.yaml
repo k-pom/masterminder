@@ -1,0 +1,9 @@
+controls:
+    gpio.pause: 24
+    gpio.skip: 22
+    # gpio.thumbs_up: 1
+    # gpio.thumbs_down: 1
+    # gpio.volume: 1
+
+input_fifo: input.fifo
+pandora_ctl: /home/pi/.config/pianobar/ctl
