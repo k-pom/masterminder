@@ -15,7 +15,7 @@ class Input(object):
         if(data):
             p = multiprocessing.Process(
                 target=broker.handle_message,
-                name,
-                data)
+                args=(name, data)
+            )
             p.start()
             return True
