@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from masterminder.lib.input import Input
+from masterminder.inputs import Input
 
 
 class PinInput(Input):

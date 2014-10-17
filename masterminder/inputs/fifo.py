@@ -1,7 +1,7 @@
 import io
 import os
 import errno
-from masterminder.lib.input import Input
+from masterminder.inputs import Input
 
 
 class FifoInput(Input):
