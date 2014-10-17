@@ -2,7 +2,7 @@
 handlers = []
 
 def handle_message(event_name, data):
-    print "Event triggered: %s" % self.name
+    print "Event triggered: %s" % event_name
     print data
     print "******"
 
