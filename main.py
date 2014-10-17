@@ -9,7 +9,7 @@ config = yaml.load(open("config.yaml", 'r'))
 # Setup GPIO listeners
 gpio.setup()
 input_pins = []
-for name, number in conf['controls'].iteritems():
+for name, number in config['controls'].iteritems():
     input_pins.append(gpio.PinInput(number, name))
 
 # Setup Fifo Listener
