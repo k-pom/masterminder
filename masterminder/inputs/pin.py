@@ -2,18 +2,6 @@ import RPi.GPIO as GPIO
 from masterminder.lib.input import Input
 
 
-PUD_DOWN = GPIO.PUD_DOWN
-PUD_UP = GPIO.PUD_UP
-
-
-def setup(mode=GPIO.BCM):
-    GPIO.setmode(mode)
-
-
-def cleanup():
-    GPIO.cleanup()
-
-
 class PinInput(Input):
     def __init__(self, number, name, pull_up_down=GPIO.PUD_DOWN):
         """

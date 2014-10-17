@@ -1,5 +1,7 @@
 import multiprocessing
 from masterminder.lib import broker
+
+
 class Input(object):
 
     def listen(self):
@@ -13,9 +15,8 @@ class Input(object):
         """
         data = self.check()
         if(data):
-            p = multiprocessing.Process(
+            multiprocessing.Process(
                 target=broker.handle_message,
                 args=(self.name, data)
-            )
-            p.start()
+            ).start()
             return True
