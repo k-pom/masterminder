@@ -18,7 +18,7 @@ class Input(object):
             self.broadcast(self.name, data)
             return True
 
-    def broadcast(name, data):
+    def broadcast(self, name, data):
         multiprocessing.Process(
             target=broker.handle_message,
             args=(name, data)

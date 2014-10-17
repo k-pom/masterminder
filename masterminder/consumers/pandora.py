@@ -22,8 +22,6 @@ def thumbs_down(data):
 
 def songstart(data):
 
-    lcd.display("Changing Song...")
-
     try:
         lcd.lcd_clear()
         lcd.lcd_display_string(data["title"], 1)

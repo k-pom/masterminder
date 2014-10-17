@@ -13,6 +13,7 @@ class PinInput(Input):
         self.number = number
         self.pull_up_down = pull_up_down
         self.name = name
+        self.closed_state = self.get_closed_state()
 
         GPIO.setup(self.number, GPIO.IN, self.pull_up_down)
 
@@ -21,7 +22,8 @@ class PinInput(Input):
             Check for the pin voltage and return if it is in an
             actionable state
         """
-        return (GPIO.input(self.number) == self.get_closed_state)
+        print "Checking %s for %s... is currently %s" % (self.number, self.closed_state, GPIO.input(self.number))
+        return (GPIO.input(self.number) == self.closed_state)
 
     def get_closed_state(self):
         """

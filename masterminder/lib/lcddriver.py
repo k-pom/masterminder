@@ -52,7 +52,7 @@ Rs = 0b00000001  # Register select bit
 @Singleton
 class LCD(object):
 
-    def __init__(self, address):
+    def __init__(self):
         # TODO: Move this to a config, or at least out of here
         self.lcd_device = i2c.i2c_device(0x3f)
 

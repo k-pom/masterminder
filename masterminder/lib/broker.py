@@ -7,6 +7,7 @@ def handle_message(event_name, data):
     print "Event triggered: %s" % event_name
     print data
     print "******"
+    print handlers
 
     for handler in handlers:
         if handler["listen_on"] == event_name:

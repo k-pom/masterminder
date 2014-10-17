@@ -21,6 +21,8 @@ class FifoInput(Input):
         try:
             # TODO: Parse the line to get a message name and data
             line = os.read(self.fifo, io.DEFAULT_BUFFER_SIZE)
+            if not line:
+                return False
             try:
                 data = json.loads(line)
 

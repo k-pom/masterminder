@@ -1,3 +1,3 @@
 import yaml
 
-config = yaml.load(open("config.yaml", 'r'))
+config = yaml.load(open("masterminder/config/config.yaml", 'r'))
