@@ -1,5 +1,5 @@
 import multiprocessing
-from masterminder.lib.broker import handle_message
+from masterminder.lib import broker
 class Input(object):
 
     def listen(self):
