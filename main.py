@@ -1,7 +1,7 @@
 import yaml
 import RPi.GPIO as GPIO
 from masterminder.inputs.pin import PinInput
-from masterminder.inputs.FifoInput import FifoInput
+from masterminder.inputs.fifo import FifoInput
 from masterminder.consumers import sample
 from masterminder.lib import broker
 
