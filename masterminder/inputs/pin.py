@@ -16,7 +16,7 @@ class PinInput(Input):
         self.pull_up_down = pull_up_down
         self.name = name
         self.closed_state = self.get_closed_state()
-        self.last_check_time = None
+        self.last_check_time = now_in_ms()  # HACK
         self.delay = delay
 
         GPIO.setup(self.number, GPIO.IN, self.pull_up_down)
