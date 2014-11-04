@@ -9,14 +9,14 @@ class PinInput(Input):
             Inialize a new pin
             :param number: BCM or BOARD number
             :param name: The broadcasted event name
-            :param delay: Calm down on returning infinite True from check (ms)
+            :param delay: Keep from broadcasting multiple events (in ms)
             :param pull_up_down: GPIO.PUD_DOWN or GPIO.PUD_UP
         """
         self.number = number
         self.pull_up_down = pull_up_down
         self.name = name
         self.closed_state = self.get_closed_state()
-        self.last_checke_time = None
+        self.last_check_time = now_in_ms()  # HACK
         self.delay = delay
 
         GPIO.setup(self.number, GPIO.IN, self.pull_up_down)
