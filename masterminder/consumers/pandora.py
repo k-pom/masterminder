@@ -53,4 +53,4 @@ def songstart(data):
 
 def _ctl(letter):
     with open(config['pandora_ctl'], "w") as fp:
-        fp.write(letter)
+        fp.write(str(letter))
