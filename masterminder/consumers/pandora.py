@@ -28,7 +28,8 @@ def change_station(data):
     """ Depending on the inputs, we may select a random station,
         increase the station by one, or something else
     """
-    set_station(1)
+    _ctl("s")
+    set_station(1)  # Should this be a broadcast event? probably
 
 
 @listen("pandora.station.set")
@@ -36,8 +37,7 @@ def set_station(data):
     station = int(data)
     with open(config['pandora_station'], 'w') as f:
         f.write(str(station))
-    _ctl("s")
-    _ctl(station)
+    _ctl("%s\n" % station)
 
 @listen("fifo.pandora.songstart")
 def songstart(data):
