@@ -5,7 +5,9 @@ from masterminder.config import config
 from masterminder.inputs.pin import PinInput
 from masterminder.inputs.fifo import FifoInput
 
-from masterminder.consumers import pandora
+# import these, even though they are not used, so that the
+# functions can register themselves to listen for events
+from masterminder.consumers import *
 
 from masterminder.lib import broker
 
@@ -18,12 +20,7 @@ for name, number in config['controls'].iteritems():
 
 channels.append(FifoInput(config['input_fifo']))
 
-# fifo event listeners
-broker.register_consumer("fifo.pandora.songstart", pandora.songstart)
-
-# gpio events
-broker.register_consumer("gpio.pause", pandora.pause)
-broker.register_consumer("gpio.skip", pandora.skip)
+broker.broadcast("app.start")
 
 print "Listening on all channels"
 while True:

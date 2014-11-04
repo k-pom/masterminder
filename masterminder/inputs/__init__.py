@@ -1,4 +1,3 @@
-import multiprocessing
 from masterminder.lib import broker
 
 
@@ -15,11 +14,5 @@ class Input(object):
         """
         data = self.check()
         if(data):
-            self.broadcast(self.name, data)
+            broker.broadcast(self.name, data)
             return True
-
-    def broadcast(self, name, data):
-        multiprocessing.Process(
-            target=broker.handle_message,
-            args=(name, data)
-        ).start()

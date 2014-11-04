@@ -1,25 +1,29 @@
+from masterminder.lib.broker import listen
 from masterminder.config import config
 from masterminder.lib.lcddriver import LCD
 
 lcd = LCD.Instance()
 
 
+@listen("gpio.pause")
 def pause(data):
     _ctl("p")
 
-
+@listen("gpio.skip")
 def skip(data):
     _ctl("n")
 
 
+@listen("gpio.like")
 def thumbs_up(data):
     _ctl("+")
 
 
+@listen("gpio.dislike")
 def thumbs_down(data):
     _ctl("-")
 
-
+@listen("fifo.pandora.songstart")
 def songstart(data):
 
     try:

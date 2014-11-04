@@ -3,6 +3,13 @@ import multiprocessing
 handlers = []
 
 
+def broadcast(name, data):
+    multiprocessing.Process(
+        target=broker.handle_message,
+        args=(name, data)
+    ).start()
+
+
 def handle_message(event_name, data):
     print "Event triggered: %s" % event_name
     print data
@@ -22,3 +29,8 @@ def register_consumer(listen_on, handler):
         "listen_on": listen_on,
         "handler": handler
     })
+
+
+def listen(event, func):
+    register_consumer(event, wrapper)
+    return func
