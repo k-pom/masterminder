@@ -30,5 +30,6 @@ def register_consumer(listen_on, handler):
 
 
 def listen(event, func):
+    print "Registering %s to %s" % (event, func)
     register_consumer(event, wrapper)
     return func
