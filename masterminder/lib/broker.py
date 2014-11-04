@@ -35,5 +35,5 @@ class listen(object):
 
     def __call__(self, func):
         print "Registering %s to %s" % (self.event, func)
-        register_consumer(self.event, wrapper)
+        register_consumer(self.event, func)
         return func
