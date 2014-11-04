@@ -35,7 +35,7 @@ def change_station(data):
 def set_station(data):
     station = int(data)
     with open(config['pandora_station'], 'w') as f:
-        f.write(station)
+        f.write(str(station))
     _ctl("s")
     _ctl(station)
 
