@@ -28,8 +28,12 @@ def register_consumer(listen_on, handler):
         "handler": handler
     })
 
+class listen(object):
 
-def listen(event, func):
-    print "Registering %s to %s" % (event, func)
-    register_consumer(event, wrapper)
-    return func
+    def __init__(self, event):
+        self.event = event
+
+    def __call__(self, func):
+        print "Registering %s to %s" % (self.event, func)
+        register_consumer(self.event, wrapper)
+        return func

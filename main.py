@@ -6,7 +6,7 @@ from masterminder.inputs.pin import PinInput
 from masterminder.inputs.fifo import FifoInput
 
 # import all consumers. The functions should register to listen for events.
-from masterminder import consumers
+from masterminder.consumers import *
 
 from masterminder.lib import broker
 
