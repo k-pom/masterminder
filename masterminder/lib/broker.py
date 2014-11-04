@@ -5,7 +5,7 @@ handlers = []
 
 def broadcast(name, data=None):
     multiprocessing.Process(
-        target=broker.handle_message,
+        target=handle_message,
         args=(name, data)
     ).start()
 
