@@ -23,6 +23,22 @@ def thumbs_up(data):
 def thumbs_down(data):
     _ctl("-")
 
+@listen("gpio.change_station")
+def change_station(data):
+    """ Depending on the inputs, we may select a random station,
+        increase the station by one, or something else
+    """
+    set_station(1)
+
+
+@listen("pandora.station.set")
+def set_station(data):
+    station = int(data)
+    _ctl("s")
+    _ctl(station)
+    with open(config['pandora_station'], 'w') as f:
+        f.write(station)
+
 @listen("fifo.pandora.songstart")
 def songstart(data):
 

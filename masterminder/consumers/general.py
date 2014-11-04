@@ -1,5 +1,6 @@
 from masterminder.lib.broker import listen
 from masterminder.lib.lcddriver import LCD
+from masterminder.lib import broker
 
 lcd = LCD.Instance()
 
@@ -13,8 +14,11 @@ def app_start(data):
     except:
         print "IO Error (app_start)"
 
-    # start pianobar in background
+    try:
+        with open(config['pandora_station'], 'r') as f:
+            station = f.read().replace('\n', '')
+    except:
+        station = 1
+        print "No pandora station found. Defaulting to 1"
 
-    # read /var/pandora_station
-
-    # broadcast station select
+    broker.broadcast("pandora.station.set", station)
