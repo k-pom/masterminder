@@ -3,7 +3,7 @@ import multiprocessing
 handlers = []
 
 
-def broadcast(name, data):
+def broadcast(name, data=None):
     multiprocessing.Process(
         target=broker.handle_message,
         args=(name, data)
