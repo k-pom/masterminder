@@ -34,10 +34,10 @@ def change_station(data):
 @listen("pandora.station.set")
 def set_station(data):
     station = int(data)
-    _ctl("s")
-    _ctl(station)
     with open(config['pandora_station'], 'w') as f:
         f.write(station)
+    _ctl("s")
+    _ctl(station)
 
 @listen("fifo.pandora.songstart")
 def songstart(data):

@@ -1,6 +1,7 @@
 from masterminder.lib.broker import listen
 from masterminder.lib.lcddriver import LCD
 from masterminder.lib import broker
+from subprocess import call
 
 lcd = LCD.Instance()
 
@@ -14,6 +15,8 @@ def app_start(data):
     except:
         print "IO Error (app_start)"
 
+    call(["su", "-", "pi" "-c" '"screen -dm -S pianobar pianobar"'])
+    
     try:
         with open(config['pandora_station'], 'r') as f:
             station = f.read().replace('\n', '')
