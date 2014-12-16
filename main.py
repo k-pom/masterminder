@@ -22,6 +22,7 @@ channels.append(FifoInput(config['input_fifo']))
 broker.broadcast("app.start")
 
 print "Listening on all channels"
+print channels
 while True:
     for channel in channels:
         channel.listen()

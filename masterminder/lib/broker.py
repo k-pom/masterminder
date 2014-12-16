@@ -16,6 +16,7 @@ def handle_message(event_name, data):
 
     for handler in handlers:
         if handler["listen_on"] == event_name:
+            print "Handling event with %s" % handler["handler"] 
             multiprocessing.Process(
                 target=handler["handler"],
                 args=(data,)

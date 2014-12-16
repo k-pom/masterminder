@@ -1,8 +1,13 @@
 controls:
-    gpio.pause: 24
-    gpio.skip: 22
-    gpio.like: 0
-    gpio.dislike: 0
+    gpio.pause: 25
+    gpio.skip: 18
+    gpio.like: 24
+    gpio.dislike: 23
+    gpio.station_down: 22
+    gpio.station_up: 27
+    gpio.volume_down: 4
+    gpio.volume_up: 17
+
 
 input_fifo: input.fifo
 pandora_ctl: /home/pi/.config/pianobar/ctl

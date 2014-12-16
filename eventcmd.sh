@@ -13,4 +13,4 @@ echo "{\"event\": \"pandora.$1\",
            \"artist\": \"$artist\",
            \"album\": \"$album\"
         }
-}" > /home/pi/workspace/masterminder/input.fifo
+}" > /home/pi/masterminder/input.fifo

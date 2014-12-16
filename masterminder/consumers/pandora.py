@@ -1,9 +1,19 @@
 from masterminder.lib.broker import listen
 from masterminder.config import config
-from masterminder.lib.lcddriver import LCD
 
-lcd = LCD.Instance()
+@listen("gpio.station_down")
+def station_down(data):
+    print "Changing station down"
+    s = _station()
+    print "Current station %s" % s
+    set_station(s - 1, True)
 
+@listen("gpio.station_up")
+def station_up(data):
+    print "Changing station up"
+    s = _station()
+    print "Current station %s" % s
+    set_station(s + 1, True)
 
 @listen("gpio.pause")
 def pause(data):
@@ -13,11 +23,9 @@ def pause(data):
 def skip(data):
     _ctl("n")
 
-
 @listen("gpio.like")
 def thumbs_up(data):
     _ctl("+")
-
 
 @listen("gpio.dislike")
 def thumbs_down(data):
@@ -33,24 +41,31 @@ def change_station(data):
 
 
 @listen("pandora.station.set")
-def set_station(data):
+def set_station(data, use_s=False):
     station = int(data)
+    print "Writing %s  to file" % station
     with open(config['pandora_station'], 'w') as f:
         f.write(str(station))
-    _ctl("%s\n" % station)
+    print "Changing station to %s" % station
+
+    if use_s:
+	_ctl("s%s\n" % station)
+    else:
+        _ctl("%s\n" % station)
 
 @listen("fifo.pandora.songstart")
 def songstart(data):
-
-    try:
-        lcd.lcd_clear()
-        lcd.lcd_display_string(data["title"], 1)
-        lcd.lcd_display_string(" by %s" % data["artist"], 2)
-        # os.system("mpg123 'http://translate.google.com:80/translate_tts?ie=UTF-8&tl=en&q=Now playing %s by %s'" % (title[0], artist[0]))
-    except:
-        print "IO ERROR!"
-
+    pass
 
 def _ctl(letter):
     with open(config['pandora_ctl'], "w") as fp:
         fp.write(str(letter))
+
+def _station():
+    try:
+        with open(config['pandora_station'], 'r') as f:
+            return int(f.read().replace('\n', ''))
+    except:
+	return 1
+
+
