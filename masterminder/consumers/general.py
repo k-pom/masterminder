@@ -32,6 +32,8 @@ def set_volume(v):
         set_to = volumes[v]
         print 'amixer set %s %s%%' % (config['sound_out'], set_to)
         os.system('amixer set %s %s%%' % (config['sound_out'], set_to))
+        with open(config['current_volume'], 'w') as f:
+            f.write(str(v))
 
 def current_volume():
     try:
