@@ -36,29 +36,19 @@ def thumbs_down(data):
 @listen("pandora.station.set")
 def set_station(data):
     station = int(data)
-    print "Writing %s  to file" % station
     with open(config['pandora_station'], 'w') as f:
         f.write(str(station))
-    print "Changing station to %s" % station
-
     _ctl("%s\n" % station)
 
-@listen("fifo.pandora.songstart")
-def songstart(data):
-    pass
 
 def _ctl(letter):
 
     with open(config['pandora_ctl'], "w") as fp:
         fp.write(str(letter))
-    print "_ctl %s" % letter
-    print "-"*80
 
 def current_station():
     try:
         with open(config['pandora_station'], 'r') as f:
             return int(f.read().replace('\n', ''))
     except:
-	return 1
-
-
+	    return 0

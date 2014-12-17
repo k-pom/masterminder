@@ -12,3 +12,19 @@ controls:
 input_fifo: input.fifo
 pandora_ctl: /home/pi/.config/pianobar/ctl
 pandora_station: /var/pandora_station
+
+sound_out: PCM
+current_volume: /var/volume_number
+volumes:
+    - 0
+    - 60
+    - 65
+    - 70
+    - 75
+    - 77
+    - 80
+    - 83
+    - 85
+    - 88
+    - 90
+    - 95
