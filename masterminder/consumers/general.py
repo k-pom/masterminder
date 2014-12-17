@@ -20,14 +20,17 @@ def app_start(data):
 ################
 @listen("gpio.volume_up")
 def volume_up(data):
+    print "current_volume() %s" % current_volume()
     set_volume(current_volume() + 1)
 
 @listen("gpio.volume_down")
 def volume_down(data):
+    print "current_volume() %s" % current_volume()
     set_volume(current_volume() - 1)
 
 def set_volume(v):
     volumes = config['volumes']
+    print "want to set it to %s" % v
     if v < len(volumes) and v >= 0:
         set_to = volumes[v]
         print 'amixer set %s %s%%' % (config['sound_out'], set_to)
