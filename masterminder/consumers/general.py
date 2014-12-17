@@ -28,7 +28,7 @@ def volume_down(data):
 
 def set_volume(v):
     volumes = config['volumes']
-    if v < len(volumes) and volume >= 0:
+    if v < len(volumes) and v >= 0:
         set_to = volumes[v]
         print 'amixer set %s %s%' % (config['sound_out'], set_to)
         os.system('amixer set %s %s%' % (config['sound_out'], set_to))
