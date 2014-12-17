@@ -11,6 +11,7 @@ echo "{\"event\": \"pandora.$1\",
         \"data\": {
            \"title\": \"$title\",
            \"artist\": \"$artist\",
-           \"album\": \"$album\"
+	   \"station\": \"$stationName\",
+	   \"stationCount\": \"$stationCount\"
         }
 }" > /home/pi/masterminder/input.fifo
