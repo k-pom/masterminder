@@ -1,5 +1,6 @@
 import os
 
+from masterminder.config import config
 from masterminder.lib.broker import listen
 from masterminder.lib import broker
 from masterminder.consumers.pandora import current_station
