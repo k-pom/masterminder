@@ -30,8 +30,8 @@ def set_volume(v):
     volumes = config['volumes']
     if v < len(volumes) and v >= 0:
         set_to = volumes[v]
-        print 'amixer set %s %s%' % (config['sound_out'], set_to)
-        os.system('amixer set %s %s%' % (config['sound_out'], set_to))
+        print 'amixer set %s %s%%' % (config['sound_out'], set_to)
+        os.system('amixer set %s %s%%' % (config['sound_out'], set_to))
 
 def current_volume():
     try:
