@@ -3,7 +3,6 @@ import os
 from masterminder.config import config
 from masterminder.lib.broker import listen
 from masterminder.lib import broker
-from masterminder.consumers.pandora import current_station
 
 ###############
 # App startup #
@@ -12,8 +11,7 @@ from masterminder.consumers.pandora import current_station
 def app_start(data):
 
     os.system('su - pi -c "screen -dm -S pianobar pianobar"')
-
-    broker.broadcast("pandora.station.set", current_station())
+    broker.broadcast("pandora.login", (config['pandora_user'], config['pandora_pass']))
 
 ################
 # Volume Stuff #

@@ -39,6 +39,12 @@ def station_change(data):
     with open(config['pandora_station_count'], 'w') as f:
         f.write(str(data['stationCount']))
 
+@listen("pandora.login")
+def login(data):
+    _ctl(data[0] + "\n")
+    _ctl(data[1] + "\n")
+    broker.broadcast("pandora.station.set", current_station())
+
 @listen("pandora.station.set")
 def set_station(data):
     station = int(data)
